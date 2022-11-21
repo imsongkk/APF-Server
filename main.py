@@ -11,7 +11,8 @@ def initServerSocket() -> socket:
 
 
 def initUnitySocket() -> socket:
-    address, port = '127.0.0.1', 19999
+    port = 19999
+    address = ('127.0.0.1', port)
     try:
         # UDP가 아닌 TCP 이므로 DGRAM이 아닌 STREAM을 사용
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
