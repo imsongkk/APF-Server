@@ -28,12 +28,12 @@ if __name__ == '__main__':
     colab_socket, addr = server_socket.accept()
     print('colab connected')
     while True:
-        data = colab_socket.recv(1024)  # 소켓에서 1024 byte 만큼 가져옴
+        data = colab_socket.recv(1017)  # 소켓에서 1024 byte 만큼 가져옴
         if not data:
             break
         # pose detection 받아옴
         try:
-            unity_socket.send(data)
+            unity_socket.sendall(data)
         except socket.error as e:
             print("error while sending :: " + str(e))
 
