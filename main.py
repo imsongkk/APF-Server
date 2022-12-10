@@ -36,7 +36,16 @@ if __name__ == '__main__':
             unity_socket.sendall(data)
         except socket.error as e:
             print("error while sending :: " + str(e))
-
+            while True:
+                try:
+                    unity_socket = initUnitySocket()
+                    unity_socket.listen()
+                    unity_socket, addr = unity_socket.accept()
+                    break
+                except:
+                    continue
+#                    print("Failed!!")
+            
             # quit the script if connection fails (e.g. Unity server side quits suddenly)
-            sys.exit()
-        print('Received from', addr, data.decode())
+            # sys.exit()
+#print('Received from', addr, data.decode())
